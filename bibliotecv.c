@@ -112,10 +112,6 @@ struct livros_a locacao[50];
 		system("cls");
 	}
 	
-	else if(op == 5){
-		
-	}
-	
 	if (op != 1){
 		
 	//ENTRADA   
@@ -146,7 +142,11 @@ struct livros_a locacao[50];
 		printf("-------------------------------------------------------------");
 		system("cls");
 		
-					
+		if(i >lt || i < 0){
+			op = 2;
+		}
+		
+		else if(i>0 && i<=lt){
 		printf("\nPronto, %s, comprovante de locação do livro ' %s ' vai ser enviado apos confirmação para o seguinte email: %s, basta mostrar na biblioteca e então começar a ler!\n", contato.nome, nome[i], contato.email);
 		printf("Deseja confirmar? [1]SIM | [2]NÃO\n");
 		scanf("%i", &conf);
@@ -161,7 +161,9 @@ struct livros_a locacao[50];
 		system("pause");
 		system("cls");
 		}	
-	}
+	  }
+		
+	 }
 		if(alug==2){
 			printf("Que pena que não achou algo de seu interesse... mas pode voltar quando quiser!\n");
 			op=0;
@@ -169,6 +171,27 @@ struct livros_a locacao[50];
 			system("pause");
 			system("cls");
 		}
+	}
+	else if(escolha==2){
+		op=0;
+		alug=0; 
+		printf("---------------------------------------\nQual o número do livro que você alugou: ");
+		scanf("%d", &i);
+		
+		if(locacao[i].disponivel==0){
+		locacao[i].disponivel++;
+		printf("---------------------------------------\nObrigado! Devolução concluida fique a vontade para alugar novos livros.\n---------------------------------------\n");
+		system("pause");
+		system("cls");	
+		}
+		
+		else if(locacao[i].disponivel!=0){
+		locacao[i].disponivel++;
+		printf("---------------------------------------\nOPS! Aparentemente este livro já esta em nosso sistema, certifique-se que digitou o n° correto do livro. Obrigado!1\n---------------------------------------\n");
+		system("pause");
+		system("cls");	
+		}
+		
 	}
 		
 	else if(escolha==4){
