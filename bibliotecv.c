@@ -1,4 +1,4 @@
-#include<stdio.h>
+ #include<stdio.h>
 #include<locale.h>
 #include<string.h>
 
@@ -142,10 +142,15 @@ struct livros_a locacao[50];
 		printf("-------------------------------------------------------------");
 		system("cls");
 		
-		if(i >lt || i < 0){
+		if(i >lt || i <= 0){
 			op = 2;
 		}
 		
+		else if(locacao[i].disponivel==0){
+			printf("Este livro está indisponivel no momento.");
+			getch();
+			system("cls");
+		}
 		else if(i>0 && i<=lt){
 		printf("\nPronto, %s, comprovante de locação do livro ' %s ' vai ser enviado apos confirmação para o seguinte email: %s, basta mostrar na biblioteca e então começar a ler!\n", contato.nome, nome[i], contato.email);
 		printf("Deseja confirmar? [1]SIM | [2]NÃO\n");
@@ -185,7 +190,7 @@ struct livros_a locacao[50];
 		system("cls");	
 		}
 		
-		else if(locacao[i].disponivel!=0){
+		else if(locacao[i].disponivel>0){
 		locacao[i].disponivel++;
 		printf("---------------------------------------\nOPS! Aparentemente este livro já esta em nosso sistema, certifique-se que digitou o n° correto do livro. Obrigado!1\n---------------------------------------\n");
 		system("pause");
