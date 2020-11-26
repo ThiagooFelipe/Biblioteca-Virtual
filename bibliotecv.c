@@ -1,4 +1,4 @@
- #include<stdio.h>
+#include<stdio.h>
 #include<locale.h>
 #include<string.h>
 
@@ -123,9 +123,9 @@ struct livros_a locacao[50];
 	if(escolha!= 1&&escolha!=2&&escolha!=3&&escolha!=4&&escolha!=424){
 	op = 2;
 	}
-	else if(escolha==1){
+	else if(escolha==1){ // Livros disponiveis 
 		op = 1;		
-	    if(alug==1){
+	    if(alug==1){ // Alugando
 	    op = 0;
 		alug=0;	
 		printf("\n-------------------------------------------------------------\nSeu nome....: ");
@@ -142,7 +142,7 @@ struct livros_a locacao[50];
 		printf("-------------------------------------------------------------");
 		system("cls");
 		
-		if(i >lt || i <= 0){
+		if(i >lt || i <= 0){ // valores invalidos
 			op = 2;
 		}
 		
@@ -185,27 +185,42 @@ struct livros_a locacao[50];
 		
 		if(locacao[i].disponivel==0){
 		locacao[i].disponivel++;
-		printf("---------------------------------------\nObrigado! Devolução concluida fique a vontade para alugar novos livros.\n---------------------------------------\n");
+		printf("---------------------------------------\nObrigado! Devolução concluida fique a \nvontade para alugar novos livros.\n---------------------------------------\n");
 		system("pause");
 		system("cls");	
 		}
 		
 		else if(locacao[i].disponivel>0){
-		locacao[i].disponivel++;
-		printf("---------------------------------------\nOPS! Aparentemente este livro já esta em nosso sistema, certifique-se que digitou o n° correto do livro. Obrigado!1\n---------------------------------------\n");
+		printf("---------------------------------------\nOPS! Aparentemente este livro já esta em nosso sistema, certifique-se que digitou o n° correto do livro. Obrigado!\n---------------------------------------\n");
 		system("pause");
 		system("cls");	
 		}
 		
 	}
+	else if(escolha==3){
+
+		op=0;
+		alug=0;
+		printf("-----------------------------------------\nDigite o nome do livro que deseja \ndoar - nome do autor....: \n");
+		scanf(" %[^\n]s", &nome[lt+1]);
+	
+		locacao[lt+1].num=lt+1;
+		locacao[lt+1].disponivel=+1;
+		lt++;
+		printf("Agradecemos pelo apoio, livro doado com \nsucesso.\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nA leitura é uma porta aberta para um mundo \nde descobertas sem fim. \n \t\t\t-Sandro Costa\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");	
+		system("pause");
+		system("cls");
+	
+	}
+	
 		
 	else if(escolha==4){
 		break;
 	}
 }
-	
+
 		
-	}
+}
 
 
 
